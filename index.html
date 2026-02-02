@@ -251,16 +251,61 @@
 
             <div class="contact-grid">
                 <div class="contact-left">
-                    <div class="contact-icon">📅</div>
-                    <p>Wybierz dogodny termin na 30-minutową konsultację.</p>
-                    <button class="btn btn-primary" data-cal-link="piotr-pacholek/30min" data-cal-namespace="30min"
-                        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Otwórz
-                        kalendarz</button>
+                    <h3>Bezpłatna konsultacja</h3>
+                    <p>Chcesz, żebyśmy wdrożyli Tobie rozwiązania marketingowe oparte na AI i pomogli skalować biznes?
+                    </p>
+                    <div class="calendar-box">
+                        <div class="contact-icon-small">📅</div>
+                        <p>Wybierz dogodny termin na 30-minutową konsultację.</p>
+                        <button class="btn btn-primary btn-sm" data-cal-link="piotr-pacholek/30min"
+                            data-cal-namespace="30min"
+                            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Otwórz
+                            kalendarz</button>
+                    </div>
+                    <div class="contact-details">
+                        <p>📧 Email: <a href="mailto:kontakt@rivio.pl">kontakt@rivio.pl</a></p>
+                        <p>📞 Telefon: <a href="tel:+48662730850">+48 662 730 850</a></p>
+                        <p>💬 Masz inny pomysł na współpracę? Napisz do nas.</p>
+                    </div>
                 </div>
-                <div class="contact-alternatives">
-                    <p>📧 Email: <a href="mailto:kontakt@rivio.pl">kontakt@rivio.pl</a></p>
-                    <p>📞 Telefon: <a href="tel:+48662730850">+48 662 730 850</a></p>
-                    <p>💬 Masz inny pomysł na współpracę? Napisz do nas.</p>
+                <div class="contact-right">
+                    <form id="contact-form" action="https://formsubmit.co/kontakt@rivio.pl" method="POST">
+                        <div class="form-group">
+                            <label for="phone">Numer telefonu</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+48 000 000 000" required>
+                            <span class="error-msg"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="twoj@email.com" required>
+                            <span class="error-msg"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Temat rozmowy</label>
+                            <textarea id="subject" name="subject" placeholder="O czym chcesz porozmawiać?"
+                                required></textarea>
+                            <span class="error-msg"></span>
+                        </div>
+                        <div class="form-checkbox">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" id="consent" name="consent" required>
+                                <label for="consent">Zgadzam się na przetwarzanie moich danych w celu odpowiedzi na
+                                    zapytanie oraz w celach marketingowych zgodnie z RODO i <a
+                                        href="polityka-prywatnosci/" target="_blank">polityką prywatności</a></label>
+                            </div>
+                            <span class="error-msg"></span>
+                        </div>
+                        <!-- Optional: FormSubmit configurations -->
+                        <input type="hidden" name="_subject" value="Nowe zgłoszenie z Rivio.pl">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <button type="submit" class="btn btn-primary w-100">Wyślij wiadomość</button>
+                    </form>
+                    <div id="form-success" class="form-success-msg" style="display: none;">
+                        <div class="success-icon">✓</div>
+                        <p>Dziękujemy za wysłanie wiadomości! Skontaktujemy się z Tobą tak szybko, jak to tylko możliwe.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

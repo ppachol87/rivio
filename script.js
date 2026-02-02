@@ -63,20 +63,104 @@ document.addEventListener('DOMContentLoaded', function () {
     // Mobile Menu Toggle
     const mobileToggle = document.querySelector('.mobile-toggle');
     const menu = document.querySelector('.menu');
-    const menuLinks = document.querySelectorAll('.menu a');
 
-    mobileToggle.addEventListener('click', () => {
-        mobileToggle.classList.toggle('active');
-        menu.classList.toggle('active');
-    });
-
-    // Close menu when clicking a link
-    menuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileToggle.classList.remove('active');
-            menu.classList.remove('active');
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            menu.classList.toggle('active');
         });
-    });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                menu.classList.remove('active');
+            });
+        });
+    }
+
+    // Contact Form Logic
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            let isValid = true;
+            const fields = [
+                { id: 'phone', msg: 'proszę o uzupełnienie' },
+                { id: 'email', msg: 'proszę o uzupełnienie' },
+                { id: 'subject', msg: 'proszę o uzupełnienie' }
+            ];
+
+            // Reset errors
+            document.querySelectorAll('.form-group, .form-checkbox').forEach(el => el.classList.remove('error'));
+            document.querySelectorAll('.error-msg').forEach(el => el.textContent = '');
+
+            // Validate text fields
+            fields.forEach(field => {
+                const el = document.getElementById(field.id);
+                const parent = el.closest('.form-group');
+                const errorSpan = parent.querySelector('.error-msg');
+
+                if (!el.value.trim()) {
+                    parent.classList.add('error');
+                    if (errorSpan) errorSpan.textContent = field.msg;
+                    isValid = false;
+                } else if (field.id === 'email') {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(el.value)) {
+                        parent.classList.add('error');
+                        if (errorSpan) errorSpan.textContent = 'Proszę podać poprawny adres e-mail';
+                        isValid = false;
+                    }
+                }
+            });
+
+            // Validate consent
+            const consent = document.getElementById('consent');
+            const consentParent = consent.closest('.form-checkbox');
+            const consentError = consentParent.querySelector('.error-msg');
+            if (!consent.checked) {
+                consentParent.classList.add('error');
+                if (consentError) consentError.textContent = 'Proszę o wyrażenie zgody na przetwarzanie danych.';
+                isValid = false;
+            }
+
+            if (!isValid) return;
+
+            // Submit logic
+            const formData = new FormData(this);
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Wysyłanie...';
+
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+                .then(async response => {
+                    if (response.ok) {
+                        this.style.display = 'none';
+                        document.getElementById('form-success').style.display = 'block';
+                    } else {
+                        const errorData = await response.json().catch(() => ({}));
+                        console.error('FormSubmit Error:', errorData);
+                        throw new Error(errorData.message || 'Błąd serwera');
+                    }
+                })
+                .catch(error => {
+                    console.error('Submission Error:', error);
+                    alert('Wystąpił błąd podczas wysyłania wiadomości: ' + error.message);
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                });
+        });
+    }
 
     console.log('%c RIVIO - System Ready', 'color: #00E5FF; font-weight: bold;');
 });
