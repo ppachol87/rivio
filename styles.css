@@ -385,51 +385,110 @@ nav {
   box-shadow: 0 0 50px rgba(0, 229, 255, 0.8);
 }
 
-/* Problem/Solution Section */
+/* Section 5: Problem Section */
+.diagnoza {
+  background: linear-gradient(to bottom, #0a192f, #000000);
+  padding: 100px 0;
+}
+
 .diagnoza h2 {
   text-align: center;
   margin-bottom: 60px;
-  font-size: 40px;
+  font-size: 36px;
 }
 
 .problem-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-bottom: 60px;
+  gap: 32px;
+  margin-bottom: 80px;
 }
 
-.glass-card {
-  background: var(--glass-bg-alt);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  border: 1px solid;
-  border-image: var(--card-border-gradient) 1;
-  box-shadow: inset 0 1px 1px rgba(0, 229, 255, 0.1), 0 8px 32px rgba(14, 17, 23, 0.6);
+.problem-card {
+  background: rgba(255, 255, 255, 0.05);
+  /* Matte Dark Glass */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  padding: 40px;
+  padding: 40px 32px;
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.glass-card:hover {
-  border-image: linear-gradient(180deg, var(--cyan) 0%, transparent 100%) 1;
-  box-shadow: inset 0 1px 1px rgba(0, 229, 255, 0.2), 0 0 40px rgba(0, 229, 255, 0.2);
+.problem-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-5px);
+  border-color: rgba(255, 82, 82, 0.3);
+  /* Subtle red glow on hover */
+}
+
+.problem-icon {
+  font-size: 24px;
+  color: #FF5252;
+  /* Red Alert Color */
+  background: rgba(255, 82, 82, 0.1);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-bottom: 24px;
+  font-weight: 800;
 }
 
 .problem-card h3 {
   margin-bottom: 16px;
   font-size: 22px;
+  color: var(--white);
 }
 
-.solution-text {
-  max-width: 800px;
+.problem-card p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
+
+/* Solution Box */
+.solution-box {
+  background: rgba(255, 255, 255, 0.08);
+  /* Lighter than problem cards */
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 60px 40px;
+  max-width: 900px;
   margin: 0 auto;
   text-align: center;
+  border: 1px solid rgba(0, 229, 255, 0.1);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
 }
 
-.solution-text p {
+.solution-box h2 {
+  color: var(--cyan);
+  margin-bottom: 40px;
+  font-size: 32px;
+}
+
+.solution-content p {
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 24px;
+  color: var(--body-text);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.solution-content .highlight-text {
+  color: var(--white);
+  font-weight: 500;
   font-size: 18px;
-  margin-bottom: 20px;
+  margin-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 32px;
 }
 
 /* Demo Section */
