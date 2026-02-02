@@ -169,5 +169,51 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Video Embedding Logic
+    function initVideoInteraction() {
+        const placeholder = document.getElementById('video-placeholder');
+        const playDemoBtn = document.getElementById('play-demo-btn');
+        const heroDemoBtn = document.getElementById('hero-demo-btn');
+
+        function loadVideo() {
+            if (!placeholder) return;
+            // Don't reload if already playing
+            if (placeholder.classList.contains('playing')) return;
+
+            const videoId = placeholder.getAttribute('data-video-id');
+            if (!videoId) return;
+
+            // Create Iframe
+            const iframe = document.createElement('iframe');
+            iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1`);
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+            iframe.setAttribute('allowfullscreen', 'true');
+            iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+            iframe.setAttribute('loading', 'lazy');
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = 'none';
+
+            // Clear placeholder and append iframe
+            placeholder.innerHTML = '';
+            placeholder.appendChild(iframe);
+            placeholder.classList.add('playing');
+        }
+
+        if (placeholder) {
+            placeholder.addEventListener('click', loadVideo);
+        }
+
+        [playDemoBtn, heroDemoBtn].forEach(btn => {
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    loadVideo();
+                });
+            }
+        });
+    }
+
+    initVideoInteraction();
+
     console.log('%c RIVIO - System Ready', 'color: #00E5FF; font-weight: bold;');
 });
