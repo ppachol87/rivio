@@ -277,6 +277,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    initVideoInteraction();
     initWaitlistModal();
 
     console.log('%c RIVIO - System Ready', 'color: #00E5FF; font-weight: bold;');
