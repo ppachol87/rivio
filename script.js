@@ -277,6 +277,28 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // FAQ Accordion
+    function initFAQ() {
+        const questions = document.querySelectorAll('.faq-question');
+        questions.forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                const answer = item.querySelector('.faq-answer');
+
+                // Toggle active class
+                item.classList.toggle('active');
+
+                // Toggle max-height
+                if (item.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                } else {
+                    answer.style.maxHeight = null;
+                }
+            });
+        });
+    }
+
+    initFAQ();
     initVideoInteraction();
     initWaitlistModal();
 
