@@ -1801,6 +1801,15 @@ footer {
     display: inline-block;
     margin-bottom: 10px;
   }
+
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .philosophy-box {
+    padding: 30px;
+  }
 }
 
 @media (min-width: 993px) {
