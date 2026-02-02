@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     } else {
                         const errorData = await response.json().catch(() => ({}));
                         console.error('FormSubmit Error:', errorData);
-                        throw new Error(errorData.message || 'Błąd serwera');
+                        throw new Error(errorData.message || 'Błąd serwera (status: ' + response.status + ')');
                     }
                 })
                 .catch(error => {
