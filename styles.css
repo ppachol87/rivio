@@ -1190,6 +1190,134 @@ footer {
   margin: 0;
 }
 
+/* Section 7: Detailed Offer */
+.detailed-offer .header-intro {
+  max-width: 800px;
+  margin: 20px auto 60px;
+  line-height: 1.6;
+  color: var(--body-text);
+}
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.offer-col {
+  background: rgba(10, 25, 47, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.offer-col:hover {
+  border-color: var(--cyan);
+  transform: translateY(-5px);
+  background: rgba(10, 25, 47, 0.8);
+}
+
+.offer-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.3));
+}
+
+.offer-col h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: var(--white);
+}
+
+.offer-subtitle {
+  font-size: 15px;
+  color: var(--cyan);
+  margin-bottom: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.offer-italic {
+  font-style: italic;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 20px;
+}
+
+.offer-desc {
+  font-size: 14px;
+  color: var(--body-text);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.checkmark-list.small li {
+  font-size: 13px;
+  margin-bottom: 10px;
+  padding-left: 20px;
+}
+
+.checkmark-list.small li::before {
+  top: 2px;
+  font-size: 14px;
+}
+
+.checkmark-list.small strong {
+  color: var(--white);
+}
+
+/* Comparison Box */
+.comparison-box {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: auto;
+  /* Push to bottom */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 12px;
+}
+
+.comp-row {
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.4;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.comp-row strong {
+  color: var(--white);
+}
+
+.comp-result {
+  color: var(--cyan);
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+/* Price Box */
+.price-box {
+  background: rgba(0, 229, 255, 0.05);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: auto;
+  font-size: 13px;
+}
+
+.price-box p {
+  margin-bottom: 8px;
+  color: var(--white);
+}
+
+.price-box p:last-child {
+  margin-bottom: 0;
+}
+
 /* Mobile Responsive */
 @media (max-width: 992px) {
   .collaboration-grid {
@@ -1264,6 +1392,7 @@ footer {
   .question-grid,
   .problem-grid,
   .services-grid,
+  .offer-grid,
   .contact-grid {
     grid-template-columns: 1fr;
   }
