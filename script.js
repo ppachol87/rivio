@@ -213,7 +213,55 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    initVideoInteraction();
+    // Waitlist Modal Logic
+    function initWaitlistModal() {
+        const modal = document.getElementById('waitlist-modal');
+        const openBtn = document.getElementById('open-waitlist-btn');
+        const closeBtn = modal ? modal.querySelector('.close-modal') : null;
+        const form = document.getElementById('waitlist-form');
+        const successMsg = document.getElementById('waitlist-success');
+
+        if (!modal || !openBtn) return;
+
+        openBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scroll
+        });
+
+        const closeModal = () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeModal);
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                const submitBtn = this.querySelector('button[type="submit"]');
+
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Zapisywanie...';
+
+                // Simulation of MailerLite submission
+                // We will add real API call when provided with details
+                setTimeout(() => {
+                    this.style.display = 'none';
+                    if (successMsg) successMsg.style.display = 'block';
+                    console.log('Registered for waitlist:', email);
+                }, 1000);
+            });
+        }
+    }
+
+    initWaitlistModal();
 
     console.log('%c RIVIO - System Ready', 'color: #00E5FF; font-weight: bold;');
 });
