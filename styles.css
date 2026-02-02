@@ -824,39 +824,152 @@ nav {
 }
 
 /* Footer */
+/* Footer */
 footer {
-  padding: 40px 0;
+  padding: 80px 0 40px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  /* Background inherited (transparent) */
 }
 
-.footer-content {
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+/* Col 1 */
+.footer-logo-wrapper {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  color: var(--body-text);
-  font-size: 14px;
+  gap: 12px;
+  margin-bottom: 20px;
+  opacity: 0.8;
 }
 
 .footer-logo {
-  height: 24px;
-  filter: grayscale(1);
-  opacity: 0.5;
+  height: 30px;
+  filter: grayscale(100%) brightness(200%);
 }
 
-.footer-links {
-  display: flex;
-  gap: 24px;
+.footer-logo-wrapper span {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--white);
 }
 
-.footer-links a {
+.footer-desc {
   color: var(--body-text);
-  text-decoration: none;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  max-width: 300px;
+  font-size: 14px;
 }
 
-/* Icons Glow */
-.glow-icon {
+.footer-socials {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-socials a {
+  font-size: 13px;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  opacity: 0.6;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-socials a:hover {
   color: var(--cyan);
-  filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.6));
+  opacity: 1;
+}
+
+/* Col 2 & 3 Headers */
+.footer-col h4 {
+  font-size: 16px;
+  color: var(--white);
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+/* Quick Links */
+.footer-list {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-list li {
+  margin-bottom: 12px;
+}
+
+.footer-list a {
+  color: rgba(255, 255, 255, 0.6);
+  transition: 0.3s;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-list a:hover {
+  color: var(--cyan);
+  padding-left: 6px;
+}
+
+/* Contact */
+.footer-contact-item {
+  margin-bottom: 16px;
+}
+
+.footer-contact-item a {
+  color: var(--white);
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.footer-contact-item a:hover {
+  color: var(--cyan);
+  opacity: 1;
+}
+
+/* Bottom Bar */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-legal a {
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0 8px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-legal a:hover {
+  color: var(--white);
+}
+
+/* Mobile Responsive Footer */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
 }
 
 /* Section 4: Collaboration Paths */
