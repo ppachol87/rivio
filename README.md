@@ -132,4 +132,4 @@ Copyright © 2026 Rivio. All rights reserved.
 
 ---
 
-Built with AI and passion for automation 🤖
+Built with AI and passion for automation 🤖 
