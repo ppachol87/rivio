@@ -106,6 +106,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     parent.classList.add('error');
                     if (errorSpan) errorSpan.textContent = field.msg;
                     isValid = false;
+                } else if (field.id === 'phone') {
+                    const phoneRegex = /^[0-9+\s-()]{7,20}$/;
+                    if (!phoneRegex.test(el.value.trim())) {
+                        parent.classList.add('error');
+                        if (errorSpan) errorSpan.textContent = 'Proszę podać poprawny numer telefonu';
+                        isValid = false;
+                    }
                 } else if (field.id === 'email') {
                     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                     if (!emailRegex.test(el.value)) {
