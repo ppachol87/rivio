@@ -1650,6 +1650,213 @@ footer {
   display: none !important;
 }
 
+/* Section 11: Philosophy */
+.philosophy {
+  padding: 100px 0;
+  position: relative;
+}
+
+.philosophy-box {
+  max-width: 900px;
+  width: 90%;
+  margin: 0 auto;
+  background: rgba(10, 25, 47, 0.9);
+  border: 1px solid var(--cyan);
+  border-radius: 24px;
+  padding: 60px;
+  box-shadow: 0 0 30px rgba(0, 229, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.philosophy-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cyan), #0a192f);
+}
+
+.large-icon {
+  font-size: 48px;
+  margin-bottom: 24px;
+}
+
+.philosophy-header h2 {
+  font-size: 32px;
+  color: var(--white);
+  margin-bottom: 50px;
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+.philosophy-col h3 {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cross-list,
+.check-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cross-list li,
+.check-list li {
+  font-size: 16px;
+  margin-bottom: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  gap: 12px;
+}
+
+.philosophy-quote {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.philosophy-quote blockquote {
+  font-size: 24px;
+  font-style: italic;
+  color: var(--cyan);
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+
+.philosophy-footer {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+/* Section 12: About Us */
+.about-us {
+  background: #060f1d;
+  /* Very deep navy */
+  padding: 100px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 0.8fr;
+  /* ~65% / 35% */
+  gap: 60px;
+  align-items: center;
+}
+
+.about-content h2 {
+  font-size: 32px;
+  margin-bottom: 24px;
+  color: var(--white);
+}
+
+.founder-intro {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 24px;
+  display: block;
+}
+
+.about-content p {
+  font-size: 16px;
+  color: var(--body-text);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.about-highlight {
+  font-style: italic;
+  color: var(--cyan) !important;
+  font-size: 18px !important;
+  border-left: 3px solid var(--cyan);
+  padding-left: 20px;
+  margin: 30px 0;
+}
+
+.about-stats {
+  display: flex;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.stat-box {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 16px 20px;
+  border-radius: 12px;
+  text-align: center;
+  min-width: 140px;
+}
+
+.stat-box.cyan {
+  border-bottom: 3px solid var(--cyan);
+}
+
+.stat-box.orange {
+  border-bottom: 3px solid #ff9100;
+}
+
+.stat-box.green {
+  border-bottom: 3px solid #00e676;
+}
+
+.stat-val {
+  display: block;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.stat-desc {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.3;
+  display: block;
+}
+
+.about-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-wrapper {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.image-wrapper:hover img {
+  transform: scale(1.02);
+}
+
 /* Mobile Responsive */
 @media (max-width: 992px) {
   .collaboration-grid {
@@ -1809,6 +2016,23 @@ footer {
 
   .philosophy-box {
     padding: 30px;
+  }
+
+  /* About Us Mobile */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-stats {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .about-image {
+    order: -1;
+    /* Image first on mobile? Or keep text first? Let's keep text first as typically preferred for About Us unless it's a personal brand intro... allow normal flow */
+    margin-bottom: 30px;
   }
 }
 
