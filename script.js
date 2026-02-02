@@ -250,13 +250,29 @@ document.addEventListener('DOMContentLoaded', function () {
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Zapisywanie...';
 
-                // Simulation of MailerLite submission
-                // We will add real API call when provided with details
-                setTimeout(() => {
-                    this.style.display = 'none';
-                    if (successMsg) successMsg.style.display = 'block';
-                    console.log('Registered for waitlist:', email);
-                }, 1000);
+                fetch('/api/subscribe', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email: email }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            this.style.display = 'none';
+                            if (successMsg) successMsg.style.display = 'block';
+                            console.log('Registered for waitlist:', email);
+                        } else {
+                            throw new Error(data.error || 'Błąd zapisu');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Waitlist Error:', error);
+                        alert('Wystąpił błąd: ' + error.message);
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Zapisz mnie';
+                    });
             });
         }
     }
