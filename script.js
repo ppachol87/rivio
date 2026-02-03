@@ -348,6 +348,31 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Timeline Accordion
+    function initTimelineAccordion() {
+        const accordionItems = document.querySelectorAll('.timeline-accordion-item');
+
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.step-header-wrap');
+            if (header) {
+                header.addEventListener('click', () => {
+
+                    // Check if already active
+                    const isActive = item.classList.contains('active');
+
+                    // Collapse all
+                    accordionItems.forEach(i => i.classList.remove('active'));
+
+                    // If not active before, expand it
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+
+    initTimelineAccordion();
     initFAQ();
     initVideoInteraction();
     initWaitlistModal();

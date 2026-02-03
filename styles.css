@@ -1350,79 +1350,305 @@ footer {
   transition: all 0.3s ease;
 }
 
-.step-card:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: var(--cyan);
-}
-
-.step-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 16px;
-}
-
-.step-header h4 {
+/* Methodology Section Overhaul v5 (Timeline Style) */
+.methodology-intro {
+  max-width: 800px;
+  margin: 0 auto 50px;
   font-size: 18px;
-  color: var(--white);
+  color: var(--body-text);
+  line-height: 1.6;
+}
+
+.methodology-vertical-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin-bottom: 50px;
+}
+
+.methodology-banner {
+  width: 100%;
+  padding: 45px;
+  position: relative;
+}
+
+.quick-wins-card {
+  padding: 45px;
+  position: relative;
+  border-left: 4px solid #FF9100;
+}
+
+/* Removed ::before for quick-wins to revert to border-left logic */
+
+.methodology-full-service {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* Reduced from 15px */
+}
+
+.full-service-header-banner {
+  padding: 45px;
+  position: relative;
+  border-left: none;
+  /* Ensure no border since using pseudo-element */
+}
+
+.full-service-header-banner::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 275px;
+  /* Increased from 235px to cover the second line */
+  background: var(--cyan);
+}
+
+.method-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 800;
   letter-spacing: 1px;
+  margin-bottom: 25px;
 }
 
-.step-badge {
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 700;
+.method-badge.orange {
+  background: rgba(255, 145, 0, 0.1);
+  color: #FF9100;
+  border: 1px solid rgba(255, 145, 0, 0.3);
 }
 
-.badge-human {
-  background: rgba(255, 179, 0, 0.15);
-  color: #FFB300;
-  border: 1px solid rgba(255, 179, 0, 0.3);
-}
-
-.badge-hybrid {
-  background: rgba(0, 229, 255, 0.15);
+.method-badge.cyan {
+  background: rgba(0, 229, 255, 0.1);
   color: var(--cyan);
   border: 1px solid rgba(0, 229, 255, 0.3);
 }
 
-.badge-ai {
-  background: rgba(100, 255, 218, 0.15);
-  color: #64ffda;
-  border: 1px solid rgba(100, 255, 218, 0.3);
+.methodology-banner h3,
+.full-service-header-banner h3 {
+  font-size: 32px;
+  margin-bottom: 12px;
+  color: var(--white);
 }
 
-.result-highlight {
-  background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(0, 229, 255, 0.05));
+.method-sub {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 25px;
+}
+
+.method-desc {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--body-text);
+  margin-bottom: 30px;
+}
+
+.method-result-box {
+  margin-top: 30px;
+  padding: 25px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.method-result-box.cyan-bg {
+  background: rgba(0, 229, 255, 0.1);
   border: 1px solid rgba(0, 229, 255, 0.3);
+  color: var(--cyan);
+}
+
+/* Vertical Timeline Flow */
+.inner-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* Reduced from 30px */
+  padding-left: 20px;
+}
+
+.accordion-instruction {
+  font-size: 13px;
+  color: rgba(0, 229, 255, 0.6);
+  margin-bottom: 5px;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.inner-step {
+  padding: 30px;
+  position: relative;
+}
+
+.step-point {
+  position: absolute;
+  left: -26px;
+  top: 45px;
+  width: 14px;
+  height: 14px;
+  background: var(--cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--cyan);
+  z-index: 2;
+}
+
+.step-line {
+  position: absolute;
+  left: -20px;
+  top: 55px;
+  bottom: -45px;
+  width: 2px;
+  background: rgba(0, 229, 255, 0.2);
+  z-index: 1;
+}
+
+.inner-step:last-child .step-line {
+  display: none;
+}
+
+/* Show line for Etap 4 only when active */
+.inner-step.timeline-accordion-item.active:last-child .step-line {
+  display: block;
+  bottom: 0;
+}
+
+.step-header-wrap {
+  display: flex;
+  justify-content: flex-start;
+  /* Changed from space-between */
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 15px;
+  /* Adjust gap to bring badge closer */
+  flex-wrap: wrap;
+}
+
+.inner-step h4 {
+  font-size: 19px;
+  margin: 0;
+  color: var(--white);
+}
+
+.step-badge-human-ai {
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--cyan);
+}
+
+/* Distinct Colors for each stage */
+.step-badge-human-ai.badge-c1 {
+  /* 80% Human -> Maybe greenish/teal or light cyan */
+  color: #00E676;
+  /* Green Accent */
+  border-color: rgba(0, 230, 118, 0.3);
+  background: rgba(0, 230, 118, 0.1);
+}
+
+.step-badge-human-ai.badge-c2 {
+  /* 50/50 -> Blue */
+  color: #2979FF;
+  /* Blue Accent */
+  border-color: rgba(41, 121, 255, 0.3);
+  background: rgba(41, 121, 255, 0.1);
+}
+
+.step-badge-human-ai.badge-c3 {
+  /* 70% AI -> Violet */
+  color: #D500F9;
+  /* Purple Accent */
+  border-color: rgba(213, 0, 249, 0.3);
+  background: rgba(213, 0, 249, 0.1);
+}
+
+.step-badge-human-ai.badge-c4 {
+  /* 80% AI -> Pink/Magenta or Deep Cyan */
+  color: #FF4081;
+  /* Pink Accent */
+  border-color: rgba(255, 64, 129, 0.3);
+  background: rgba(255, 64, 129, 0.1);
+}
+
+.checkmark-list.small li {
+  font-size: 15px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+/* Bottom Banners */
+.methodology-info-banner {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 30px;
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.info-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.methodology-info-banner p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--body-text);
+}
+
+.methodology-final-gradient {
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.15), rgba(0, 229, 255, 0.05));
+  border: 1px solid var(--cyan);
   border-radius: 16px;
   padding: 40px;
   text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
   position: relative;
   overflow: hidden;
+  margin-top: 30px;
 }
 
-.result-highlight::after {
+.methodology-final-gradient::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 4px;
+  width: 5px;
   height: 100%;
   background: var(--cyan);
 }
 
-.result-highlight p {
+.methodology-final-gradient p {
   font-size: 18px;
+  font-weight: 500;
   color: var(--white);
-  line-height: 1.6;
+  line-height: 1.7;
   margin: 0;
+}
+
+@media (max-width: 768px) {
+
+  .methodology-banner,
+  .full-service-header-banner {
+    padding: 30px 20px;
+  }
+
+  .step-header-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 }
 
 /* Section 7: Detailed Offer */
@@ -1857,6 +2083,114 @@ footer {
   margin-top: auto;
   padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.metr.inner-step {
+  position: relative;
+  padding: 30px;
+  border-radius: 12px;
+  background: rgba(10, 25, 47, 0.4);
+  /* Darker initial bg */
+  transition: all 0.3s ease;
+}
+
+/* Accordion Logic */
+.inner-step.timeline-accordion-item {
+  cursor: default;
+}
+
+.inner-step.timeline-accordion-item .step-header-wrap {
+  cursor: pointer;
+  margin-bottom: 0;
+  /* Remove margin when collapsed */
+  transition: margin-bottom 0.3s ease;
+}
+
+.inner-step.timeline-accordion-item.active .step-header-wrap {
+  margin-bottom: 20px;
+  /* Restore margin when active */
+}
+
+/* Collapsed State */
+.timeline-accordion-item .checkmark-list.small {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.4s ease-out;
+  margin-top: 0;
+}
+
+/* Expanded State */
+.inner-step.timeline-accordion-item.active .checkmark-list.small {
+  max-height: 1000px;
+  /* Arbitrary large height */
+  opacity: 1;
+  margin-top: 15px;
+}
+
+/* Mobile Fixes */
+@media (max-width: 768px) {
+
+  /* Fix Cyan line height on mobile */
+  .full-service-header-banner::before {
+    height: 100%;
+    /* Responsive height */
+  }
+
+  /* Force single line for header wrapper but allow text wrapping if needed */
+  /* Force single line for header wrapper but allow text wrapping if needed */
+  .step-header-wrap {
+    display: flex !important;
+    flex-direction: column !important;
+    /* Stack vertically: Header top, Badge bottom */
+    align-items: flex-start !important;
+    /* Left align */
+    gap: 8px !important;
+    white-space: normal !important;
+  }
+
+  /* Adjust header text to wrap instead of disappearing */
+  .inner-step h4 {
+    font-size: 14px !important;
+    /* Slightly larger to be readable */
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+    flex: 1;
+    /* Take available space */
+    white-space: normal !important;
+    /* Allow wrap */
+    word-break: break-word;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+
+  .step-badge-human-ai {
+    font-size: 9px !important;
+    padding: 3px 8px !important;
+    margin: 0 !important;
+    width: auto !important;
+    display: inline-block !important;
+    white-space: nowrap !important;
+    /* Badge itself shouldn't wrap internal text */
+    flex-shrink: 0 !important;
+  }
+
+  .inner-step {
+    padding: 15px !important;
+  }
+
+  /* Info Banner Fix: Icon above text on mobile */
+  .methodology-info-banner {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .info-icon {
+    font-size: 32px;
+  }
 }
 
 .metric-box {
@@ -2347,6 +2681,57 @@ footer {
     margin-bottom: 10px;
   }
 
+  /* Fix for Philosophy header "Nie wdrażamy..." on small screens */
+  .philosophy-header h2 {
+    font-size: 22px;
+    /* Reduced from default */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    padding: 0 10px;
+    /* Ensure no edge cutoff */
+  }
+
+  /* Fix for Footer text disappearing/cutting off */
+  .footer-col a,
+  .footer-bottom,
+  .footer-legal,
+  .footer-legal a,
+  .footer-desc {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    height: auto !important;
+    max-width: 100%;
+  }
+
+  /* Fix Philosophy text cutoff on mobile */
+  .philosophy-grid li,
+  .list-text,
+  .philosophy-quote blockquote,
+  .philosophy-footer {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    flex: 1;
+    /* Allow text to take available space */
+  }
+
+  /* Stack check-list items (Icon top, Text bottom) on mobile */
+  .check-list li {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+
+  .footer-legal {
+    /* Stack links if needed or break them */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    line-height: 1.5;
+  }
+
   .philosophy-grid {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -2371,6 +2756,14 @@ footer {
     order: -1;
     /* Image first on mobile? Or keep text first? Let's keep text first as typically preferred for About Us unless it's a personal brand intro... allow normal flow */
     margin-bottom: 30px;
+  }
+
+  /* Fix for founder image becoming too large on tablet/mobile */
+  .about-image .image-wrapper {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    /* Ensure centering */
   }
 }
 
