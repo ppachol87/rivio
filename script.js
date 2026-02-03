@@ -204,13 +204,12 @@ document.addEventListener('DOMContentLoaded', function () {
             placeholder.addEventListener('click', loadVideo);
         }
 
-        [playDemoBtn, heroDemoBtn].forEach(btn => {
-            if (btn) {
-                btn.addEventListener('click', () => {
-                    loadVideo();
-                });
-            }
-        });
+        // Only attach to the button inside the verification section
+        if (playDemoBtn) {
+            playDemoBtn.addEventListener('click', () => {
+                loadVideo();
+            });
+        }
     }
 
     // Waitlist Modal Logic
