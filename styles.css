@@ -972,7 +972,47 @@ footer {
   }
 }
 
-/* Video Lightbox */
+/* Philosophy List Alignment - Left Aligned with Flex */
+.philosophy-grid ul {
+  text-align: left;
+}
+
+.check-list li,
+.cross-list li {
+  display: flex;
+  align-items: center;
+  /* Center vertically */
+  justify-content: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.list-icon {
+  flex-shrink: 0;
+  /* Prevent icon shrinking */
+}
+
+
+
+
+/* Remove default list styling just in case, though likely handled by reset */
+.check-list,
+.cross-list {
+  list-style: none;
+  padding: 0;
+}
+
+/* Subtext styling */
+.list-sub {
+  font-size: 0.9em;
+  opacity: 0.7;
+  display: block;
+  /* Force new line */
+  margin-top: 4px;
+  font-weight: 400;
+}
+
 .video-modal-overlay {
   position: fixed;
   top: 0;
@@ -1599,6 +1639,18 @@ footer {
 }
 
 .adoption-text strong {
+  color: var(--white);
+}
+
+/* Bio Link Visibility */
+.about-content p a {
+  color: var(--cyan);
+  text-decoration: underline;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.about-content p a:hover {
   color: var(--white);
 }
 
