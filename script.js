@@ -169,45 +169,96 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Video Embedding Logic
+    // Video Embedding Logic (Lightbox)
     function initVideoInteraction() {
         const placeholder = document.getElementById('video-placeholder');
         const playDemoBtn = document.getElementById('play-demo-btn');
         const heroDemoBtn = document.getElementById('hero-demo-btn');
+        const videoId = placeholder ? placeholder.getAttribute('data-video-id') : 'wNWU8549g08';
 
-        function loadVideo() {
-            if (!placeholder) return;
-            // Don't reload if already playing
-            if (placeholder.classList.contains('playing')) return;
+        function openLightbox() {
+            // Create Overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'video-modal-overlay';
 
-            const videoId = placeholder.getAttribute('data-video-id');
-            if (!videoId) return;
+            // Create Content Container
+            const content = document.createElement('div');
+            content.className = 'video-modal-content';
+
+            // Create Close Button
+            const closeBtn = document.createElement('button');
+            closeBtn.className = 'video-modal-close';
+            closeBtn.innerHTML = '×';
+            // Append close button to overlay (positioned relative to content via CSS, or append to container?)
+            // CSS says .video-modal-close is absolute top -40px right 0 relative to content?
+            // Actually it is often better to put close button INSIDE container or OUTSIDE.
+            // Let's put it inside content but absolute positioned, wait.
+            // CSS: .video-modal-content { position: relative; } .video-modal-close { position: absolute; top: -40px; }
+            // So close button should be appended to content.
+            content.appendChild(closeBtn);
 
             // Create Iframe
             const iframe = document.createElement('iframe');
             iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1`);
             iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
             iframe.setAttribute('allowfullscreen', 'true');
-            iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-            iframe.setAttribute('loading', 'lazy');
             iframe.style.width = '100%';
             iframe.style.height = '100%';
             iframe.style.border = 'none';
 
-            // Clear placeholder and append iframe
-            placeholder.innerHTML = '';
-            placeholder.appendChild(iframe);
-            placeholder.classList.add('playing');
+            content.appendChild(iframe);
+            overlay.appendChild(content);
+            document.body.appendChild(overlay);
+
+            // Force reflow for transition
+            setTimeout(() => {
+                overlay.classList.add('active');
+            }, 10);
+
+            // Close Logic
+            function closeLightbox() {
+                overlay.classList.remove('active');
+                setTimeout(() => {
+                    overlay.remove();
+                }, 400);
+            }
+
+            closeBtn.addEventListener('click', closeLightbox);
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeLightbox();
+            });
+
+            // ESC key
+            document.addEventListener('keydown', function escHandler(e) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                    document.removeEventListener('keydown', escHandler);
+                }
+            });
         }
 
         if (placeholder) {
-            placeholder.addEventListener('click', loadVideo);
+            placeholder.addEventListener('click', openLightbox);
         }
 
-        // Only attach to the button inside the verification section
+        // Hero Button - Only Scroll
+        if (heroDemoBtn) {
+            heroDemoBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector('#video-player');
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100, // Minimal scroll offset
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        }
+
+        // Play Button in Qualification Section - Opens Lightbox
         if (playDemoBtn) {
             playDemoBtn.addEventListener('click', () => {
-                loadVideo();
+                openLightbox();
             });
         }
     }
