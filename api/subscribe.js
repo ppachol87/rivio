@@ -1,6 +1,7 @@
 /**
  * Vercel Serverless Function: api/subscribe.js
  * Handles Waitlist signatures and pushes them to MailerLite
+ * Updated: Force env reload
  */
 
 export default async function handler(req, res) {
