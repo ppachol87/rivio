@@ -376,6 +376,40 @@ document.addEventListener('DOMContentLoaded', function () {
     initFAQ();
     initVideoInteraction();
     initWaitlistModal();
+    initCookieBanner();
+
+    // Cookie Banner Logic
+    function initCookieBanner() {
+        const banner = document.getElementById('cookie-banner');
+        if (!banner) return;
+
+        const acceptBtn = document.getElementById('cookie-accept');
+        const rejectBtn = document.getElementById('cookie-reject');
+
+        // Check local storage
+        if (!localStorage.getItem('rivio_cookie_consent')) {
+            // Show banner after short delay
+            setTimeout(() => {
+                banner.classList.add('visible');
+            }, 1000);
+        }
+
+        // Accept All
+        if (acceptBtn) {
+            acceptBtn.addEventListener('click', () => {
+                localStorage.setItem('rivio_cookie_consent', 'all');
+                banner.classList.remove('visible');
+            });
+        }
+
+        // Necessary Only (Reject non-essential)
+        if (rejectBtn) {
+            rejectBtn.addEventListener('click', () => {
+                localStorage.setItem('rivio_cookie_consent', 'necessary');
+                banner.classList.remove('visible');
+            });
+        }
+    }
 
     console.log('%c RIVIO - System Ready', 'color: #00E5FF; font-weight: bold;');
 });
