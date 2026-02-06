@@ -243,11 +243,12 @@ nav {
 }
 
 
-/* Qualification Section */
+/* Qualification Section (Now Section 3) */
 .qualification {
   padding: 120px 0;
-  background: radial-gradient(circle at 50% 50%, rgba(41, 121, 255, 0.05) 0%, transparent 70%),
-    linear-gradient(to bottom, #0a192f, #0d213f);
+  background: linear-gradient(to bottom, #02060c 0%, #0a192f 50%, #0d213f 100%);
+  position: relative;
+  z-index: 1;
 }
 
 .section-header p {
@@ -385,10 +386,12 @@ nav {
   box-shadow: 0 0 50px rgba(0, 229, 255, 0.8);
 }
 
-/* Section 5: Problem Section */
+/* Section 5: Problem Section (Now Section 2) */
 .diagnoza {
-  background: linear-gradient(to bottom, #0a192f, #000000);
+  background: linear-gradient(to bottom, #0a192f 50%, #02060c 100%);
   padding: 100px 0;
+  position: relative;
+  z-index: 2;
 }
 
 .diagnoza h2 {
@@ -1096,8 +1099,12 @@ footer {
 
 /* Original Container hidden when modal active? No, we append modal to body. */
 .collaboration {
-  background: #0a192f;
+  background: #081221;
+  /* Distinct Deep Navy to separate from previous section */
   padding: 120px 0;
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .collaboration-grid {
@@ -1304,10 +1311,10 @@ footer {
 
 /* Section 6: Methodology (Why It Works) */
 .methodology {
-  background: #0a192f;
+  background: linear-gradient(to bottom, #02060c 0%, #0a192f 30%, #0a192f 100%);
   padding: 120px 0;
   position: relative;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: none;
 }
 
 .methodology::before {
@@ -2786,155 +2793,157 @@ footer {
   .mobile-toggle {
     display: none;
   }
-}/* =========================================
+}
+
+/* =========================================
    Cookie Banner
    ========================================= */
 .cookie-banner {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    padding: 24px;
-    display: flex;
-    justify-content: center;
-    pointer-events: none;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.5s ease-out;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease-out;
 }
 
 .cookie-banner.visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .cookie-wrapper {
-    background: #0a101b;
-    /* Deep navy matching footer/modals */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    border-radius: 16px;
-    padding: 20px;
-    max-width: 900px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 24px;
+  background: #0a101b;
+  /* Deep navy matching footer/modals */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  border-radius: 16px;
+  padding: 20px;
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 24px;
 }
 
 .cookie-icon-box {
-    background: rgba(255, 255, 255, 0.05);
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.05);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .cookie-icon {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 .cookie-content {
-    flex: 1;
+  flex: 1;
 }
 
 .cookie-content h3 {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--white);
-    margin-bottom: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 4px;
 }
 
 .cookie-content p {
-    font-size: 14px;
-    color: var(--body-text);
-    margin: 0;
-    line-height: 1.5;
+  font-size: 14px;
+  color: var(--body-text);
+  margin: 0;
+  line-height: 1.5;
 }
 
 .cookie-content a {
-    color: var(--cyan);
-    text-decoration: none;
-    transition: 0.3s;
+  color: var(--cyan);
+  text-decoration: none;
+  transition: 0.3s;
 }
 
 .cookie-content a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .cookie-actions {
-    display: flex;
-    gap: 12px;
-    flex-shrink: 0;
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 .btn-cookie-outline {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--white);
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .btn-cookie-outline:hover {
-    border-color: var(--white);
-    background: rgba(255, 255, 255, 0.05);
+  border-color: var(--white);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .btn-cookie-primary {
-    background: var(--cyan);
-    color: #000;
-    border: none;
-    padding: 10px 24px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  background: var(--cyan);
+  color: #000;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .btn-cookie-primary:hover {
-    background: #00cce0;
-    /* Slightly darker cyan */
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 229, 255, 0.3);
+  background: #00cce0;
+  /* Slightly darker cyan */
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 229, 255, 0.3);
 }
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-    .cookie-banner {
-        padding: 16px;
-    }
+  .cookie-banner {
+    padding: 16px;
+  }
 
-    .cookie-wrapper {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-    }
+  .cookie-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
 
-    .cookie-icon-box {
-        display: none;
-        /* Hide icon on mobile to save space */
-    }
+  .cookie-icon-box {
+    display: none;
+    /* Hide icon on mobile to save space */
+  }
 
-    .cookie-actions {
-        width: 100%;
-        justify-content: flex-end;
-    }
+  .cookie-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
 
-    .btn-cookie-outline,
-    .btn-cookie-primary {
-        flex: 1;
-        text-align: center;
-        padding: 12px;
-    }
+  .btn-cookie-outline,
+  .btn-cookie-primary {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+  }
 }
