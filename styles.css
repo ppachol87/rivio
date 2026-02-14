@@ -3230,4 +3230,9 @@ footer {
     font-size: 18px;
     width: 100%;
   }
+
+  .analytics-h1 {
+    font-size: 32px !important;
+    line-height: 1.2 !important;
+  }
 }
