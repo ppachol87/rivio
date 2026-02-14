@@ -285,7 +285,9 @@
                 <!-- n8n Workflow -->
                 <div class="proof-item glass-card">
                     <div class="proof-img-container">
-                        <img src="../assets/analityka/n8n-workflow.png" alt="n8n Backend Workflow">
+                        <img src="../assets/analityka/n8n-workflow.png" alt="n8n Backend Workflow"
+                            class="lightbox-trigger">
+                        <div class="zoom-hint"><span>🔍 Powiększ</span></div>
                     </div>
                     <div class="proof-caption">
                         <p>To dzieje się pod maską, żebyś Ty miał prosto – między innymi takiego AgentaAI wdrożymy</p>
@@ -295,7 +297,9 @@
                 <!-- Daily Summary -->
                 <div class="proof-item glass-card">
                     <div class="proof-img-container">
-                        <img src="../assets/analityka/ga-comparison.png" alt="Mail with daily summary">
+                        <img src="../assets/analityka/ga-comparison.png" alt="Mail with daily summary"
+                            class="lightbox-trigger">
+                        <div class="zoom-hint"><span>🔍 Powiększ</span></div>
                     </div>
                     <div class="proof-caption">
                         <p>Mail z podsumowaniem dnia (czytelna tabela z wynikami)</p>
@@ -305,7 +309,9 @@
                 <!-- AI Recommendations -->
                 <div class="proof-item glass-card">
                     <div class="proof-img-container">
-                        <img src="../assets/analityka/report-summary.png" alt="AI Recommendations Section">
+                        <img src="../assets/analityka/report-summary.png" alt="AI Recommendations Section"
+                            class="lightbox-trigger">
+                        <div class="zoom-hint"><span>🔍 Powiększ</span></div>
                     </div>
                     <div class="proof-caption">
                         <p>Sekcja „Rekomendacje AI” (konkretne wnioski i akcje)</p>
@@ -955,6 +961,14 @@
                 <button id="cookie-reject" class="btn btn-cookie-outline">Tylko niezbędne</button>
                 <button id="cookie-accept" class="btn btn-cookie-primary">Akceptuj wszystkie</button>
             </div>
+        </div>
+    </div>
+
+    <!-- Image Lightbox Modal -->
+    <div id="image-lightbox" class="img-modal-overlay">
+        <div class="img-modal-content">
+            <button class="img-modal-close">&times;</button>
+            <img src="" alt="Enlarged view" id="lightbox-img">
         </div>
     </div>
 
