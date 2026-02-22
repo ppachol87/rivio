@@ -881,7 +881,28 @@
         <div class="container contact-cta">
             <h2>Przestań zgadywać. Zacznij skalować.</h2>
 
-            <div class="contact-grid">
+            <!-- Widoczna sekcja - uproszczony layout -->
+            <div class="contact-centered">
+                <h3>Bezpłatna konsultacja</h3>
+                <p>Porozmawiamy o Twoich wyzwaniach i sprawdzimy,
+                    czy nasze rozwiązania pomogą Ci skalować wyniki bez rozbudowy zespołu.</p>
+                <div class="calendar-box">
+                    <div class="contact-icon-small">📅</div>
+                    <p>Wybierz dogodny termin na 30-minutową konsultację.</p>
+                    <button class="btn btn-primary btn-sm" data-cal-link="piotr-pacholek/30min"
+                        data-cal-namespace="30min"
+                        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Otwórz
+                        kalendarz</button>
+                </div>
+                <div class="contact-details">
+                    <p class="contact-alt-label">Wolisz inną formę kontaktu?</p>
+                    <p>✉️ Napisz do nas bezpośrednio: <a href="mailto:kontakt@rivio.pl">kontakt@rivio.pl</a></p>
+                    <p>📞 <a href="tel:+48662730850">+48 662 730 850</a></p>
+                </div>
+            </div>
+
+            <!-- Ukryta rezerwa z formularzem (do przywrócenia po wdrożeniu Resend) -->
+            <div class="contact-grid" style="display: none;">
                 <div class="contact-left">
                     <h3>Bezpłatna konsultacja</h3>
                     <p>Porozmawiamy o Twoich wyzwaniach i sprawdzimy,
@@ -897,7 +918,6 @@
                     <div class="contact-details">
                         <p>📧 Email: <a href="mailto:kontakt@rivio.pl">kontakt@rivio.pl</a></p>
                         <p>📞 Telefon: <a href="tel:+48662730850">+48 662 730 850</a></p>
-                        <p>💬 Masz inny pomysł na współpracę? Napisz do nas.</p>
                     </div>
                 </div>
                 <div class="contact-right">
@@ -927,7 +947,6 @@
                             </div>
                             <span class="error-msg"></span>
                         </div>
-                        <!-- Optional: FormSubmit configurations -->
                         <input type="hidden" name="_subject" value="Nowe zgłoszenie z Rivio.pl">
                         <input type="hidden" name="_template" value="table">
                         <input type="hidden" name="_captcha" value="false">

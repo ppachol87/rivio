@@ -706,6 +706,16 @@ nav {
   text-shadow: 0 0 10px var(--glow-cyan);
 }
 
+.contact-alt-label {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  opacity: 0.7;
+  margin-bottom: 8px !important;
+  font-weight: 600;
+}
+
 /* Contact Form */
 #contact-form {
   display: flex;
