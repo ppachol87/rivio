@@ -636,6 +636,28 @@ nav {
   align-items: start;
 }
 
+.contact-centered {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-centered h3 {
+  font-size: 28px;
+  color: var(--cyan);
+  margin-bottom: 16px;
+}
+
+.contact-centered>p {
+  font-size: 18px;
+  color: var(--white);
+  margin-bottom: 32px;
+}
+
+.contact-centered .contact-details {
+  margin-top: 24px;
+}
+
 .contact-left h3 {
   font-size: 28px;
   color: var(--cyan);
